@@ -1,0 +1,35 @@
+{
+  "name": "furkot-sygic-itf",
+  "version": "0.0.0",
+  "description": "Generate Sygic ITF files from Furkot trip data.",
+  "homepage": "https://furkot.com",
+  "author": {
+    "name": "Damian Krzeminski",
+    "email": "pirxpilot@furkot.com",
+    "url": "https://pirxpilot.me"
+  },
+  "repository": "furkot/furkot-sygic-itf",
+  "license": "MIT",
+  "keywords": [
+    "furkot-sygic-itf",
+    "furkot",
+    "roadtrip",
+    "planner",
+    "export",
+    "sygic",
+    "ITF"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jshint": "~2",
+    "mocha": "~5",
+    "should": "~13"
+  },
+  "scripts": {
+    "test": "make check"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ]
+}
