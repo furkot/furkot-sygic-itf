@@ -19,7 +19,9 @@
     "sygic",
     "ITF"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "stream-generators": "^0.1.1"
+  },
   "devDependencies": {
     "jshint": "~2",
     "mocha": "~5",
