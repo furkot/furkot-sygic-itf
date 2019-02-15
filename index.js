@@ -1,1 +1,1 @@
-module.exports = require('./lib/furkot-sygic-itf');
+module.exports = require('./lib/itf');
