@@ -19,12 +19,13 @@
     "sygic",
     "ITF"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "stream-generators": "^0.1.1"
+  },
   "devDependencies": {
     "jshint": "~2",
     "mocha": "~5",
-    "should": "~13",
-    "stream-buffers": "~3"
+    "should": "~13"
   },
   "scripts": {
     "test": "make check"
