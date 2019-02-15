@@ -1,6 +1,6 @@
 {
   "name": "furkot-sygic-itf",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Generate Sygic ITF files from Furkot trip data.",
   "homepage": "https://furkot.com",
   "author": {
