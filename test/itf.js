@@ -50,6 +50,19 @@ describe('furkot Sygic ITF', function () {
     });
   });
 
+
+  it('simple trip - missing name in one stop', function(done) {
+    const t = require('./fixtures/simple-trip.json');
+    const expected = loadFile('./fixtures/simple-no-name.itf');
+
+    delete t.routes[0].points[1].name;
+    generateITF(t, (err, generated) => {
+      // require('fs').writeFileSync('simple-no-name.itf', generated);
+      compareITF(generated, expected);
+      done(err);
+    });
+  });
+
   it('multi trip', function (done) {
     const t = require('./fixtures/multi-trip.json');
     const expected = loadFile('./fixtures/multi.itf');
