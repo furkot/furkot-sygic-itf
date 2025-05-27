@@ -2,13 +2,18 @@
   "name": "furkot-sygic-itf",
   "version": "0.1.2",
   "description": "Generate Sygic ITF files from Furkot trip data.",
+  "type": "module",
+  "exports": "./lib/itf.js",
   "homepage": "https://furkot.com",
   "author": {
     "name": "Damian Krzeminski",
     "email": "pirxpilot@furkot.com",
     "url": "https://pirxpilot.me"
   },
-  "repository": "furkot/furkot-sygic-itf",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/furkot/furkot-sygic-itf.git"
+  },
   "license": "MIT",
   "keywords": [
     "furkot-sygic-itf",
@@ -29,7 +34,6 @@
     "test": "make check"
   },
   "files": [
-    "index.js",
     "lib"
   ]
 }

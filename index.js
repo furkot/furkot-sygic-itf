@@ -1,1 +1,1 @@
-module.exports = require('./lib/itf');
+export default require('./lib/itf');

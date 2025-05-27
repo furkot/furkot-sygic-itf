@@ -1,14 +1,13 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { Writable } from 'node:stream';
+import test from 'node:test';
 
-const { readFileSync } = require('node:fs');
-const { Writable } = require('node:stream');
-const { resolve } = require('node:path');
-
-const itf = require('../');
+import itf from '../lib/itf.js';
 
 function loadFile(file) {
-  const filename = resolve(__dirname, file);
+  const filename = resolve(import.meta.dirname, file);
   return readFileSync(filename);
 }
 
