@@ -1,7 +1,6 @@
 [![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][build-image]][build-url]
 [![Dependency Status][deps-image]][deps-url]
-[![Dev Dependency Status][deps-dev-image]][deps-dev-url]
 
 # furkot-sygic-itf
 
@@ -16,7 +15,7 @@ $ npm install --save furkot-sygic-itf
 ## Usage
 
 ```js
-const itf = require('furkot-sygic-itf');
+import itf = from 'furkot-sygic-itf';
 
 itf(ostream, trip);
 ```
@@ -25,14 +24,11 @@ itf(ostream, trip);
 
 MIT © [Damian Krzeminski](https://pirxpilot.me)
 
-[npm-image]: https://img.shields.io/npm/v/furkot-sygic-itf.svg
+[npm-image]: https://img.shields.io/npm/v/furkot-sygic-itf
 [npm-url]: https://npmjs.org/package/furkot-sygic-itf
 
-[travis-url]: https://travis-ci.com/furkot/furkot-sygic-itf
-[travis-image]: https://img.shields.io/travis/com/furkot/furkot-sygic-itf.svg
+[build-url]: https://github.com/furkot/furkot-sygic-itf/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/actions/workflow/status/furkot/furkot-sygic-itf/check.yaml?branch=main
 
-[deps-image]: https://img.shields.io/david/furkot/furkot-sygic-itf.svg
-[deps-url]: https://david-dm.org/furkot/furkot-sygic-itf
-
-[deps-dev-image]: https://img.shields.io/david/dev/furkot/furkot-sygic-itf.svg
-[deps-dev-url]: https://david-dm.org/furkot/furkot-sygic-itf?type=dev
+[deps-image]: https://img.shields.io/librariesio/release/npm/furkot-sygic-itf
+[deps-url]: https://libraries.io/npm/furkot-sygic-itf
