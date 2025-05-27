@@ -1,6 +1,9 @@
-const { readFileSync } = require('fs');
-const { Writable } = require('stream');
-const { resolve } = require('path');
+const test = require('node:test');
+const assert = require('node:assert/strict');
+
+const { readFileSync } = require('node:fs');
+const { Writable } = require('node:stream');
+const { resolve } = require('node:path');
 
 const itf = require('../');
 
@@ -9,11 +12,15 @@ function loadFile(file) {
   return readFileSync(filename);
 }
 
+function loadJSON(file) {
+  return JSON.parse(loadFile(file));
+}
+
 function generateITF(t, fn) {
   const chunks = [];
 
   const ostream = new Writable({
-    write(chunk, encoding, next) {
+    write(chunk, _encoding, next) {
       chunks.push(chunk);
       next();
     },
@@ -30,48 +37,43 @@ function generateITF(t, fn) {
  * Compare buffers
  */
 function compareITF(actual, expected) {
-  actual.should.have.length(expected.length);
+  assert.equal(actual.length, expected.length);
   // skip 4 byte timestamp at the start
-  for(let i = 4; i < actual.length; i += 1) {
-    actual.readUInt8(i).should.eql(expected.readUInt8(i), `at index ${i}`);
+  for (let i = 4; i < actual.length; i += 1) {
+    assert.equal(actual.readUInt8(i), expected.readUInt8(i), `at index ${i}`);
   }
 }
 
-describe('furkot Sygic ITF', function () {
+test('simple trip', (_, done) => {
+  const data = loadJSON('./fixtures/simple-trip.json');
+  const expected = loadFile('./fixtures/simple.itf');
 
-  it('simple trip', function(done) {
-    const t = require('./fixtures/simple-trip.json');
-    const expected = loadFile('./fixtures/simple.itf');
-
-    generateITF(t, (err, generated) => {
-      // require('fs').writeFileSync('simple.itf', generated);
-      compareITF(generated, expected);
-      done(err);
-    });
+  generateITF(data, (err, generated) => {
+    // require('fs').writeFileSync('simple.itf', generated);
+    compareITF(generated, expected);
+    done(err);
   });
+});
 
+test('simple trip - missing name in one stop', (_, done) => {
+  const data = loadJSON('./fixtures/simple-trip.json');
+  const expected = loadFile('./fixtures/simple-no-name.itf');
 
-  it('simple trip - missing name in one stop', function(done) {
-    const t = require('./fixtures/simple-trip.json');
-    const expected = loadFile('./fixtures/simple-no-name.itf');
-
-    delete t.routes[0].points[1].name;
-    generateITF(t, (err, generated) => {
-      // require('fs').writeFileSync('simple-no-name.itf', generated);
-      compareITF(generated, expected);
-      done(err);
-    });
+  delete data.routes[0].points[1].name;
+  generateITF(data, (err, generated) => {
+    // require('fs').writeFileSync('simple-no-name.itf', generated);
+    compareITF(generated, expected);
+    done(err);
   });
+});
 
-  it('multi trip', function (done) {
-    const t = require('./fixtures/multi-trip.json');
-    const expected = loadFile('./fixtures/multi.itf');
+test('multi trip', (_, done) => {
+  const data = loadJSON('./fixtures/multi-trip.json');
+  const expected = loadFile('./fixtures/multi.itf');
 
-    generateITF(t, (err, generated) => {
-      // require('fs').writeFileSync('multi.itf', generated);
-      compareITF(generated, expected);
-      done(err);
-    });
+  generateITF(data, (err, generated) => {
+    // require('fs').writeFileSync('multi.itf', generated);
+    compareITF(generated, expected);
+    done(err);
   });
-
 });
